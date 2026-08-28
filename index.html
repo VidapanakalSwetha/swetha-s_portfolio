@@ -6,24 +6,32 @@
 <title>Swetha Vidapanakal | Data Analytics Portfolio</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-    line-height: 1.6;
-  }
-  header {
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+  nav { text-align: center; padding: 20px; background: #1e293b; }
+  nav a { color: #38bdf8; text-decoration: none; margin: 0 15px; font-weight: 600; }
+  nav a:hover { text-decoration: underline; }
+
+  .hero {
     text-align: center;
-    padding: 80px 20px 50px;
+    padding: 80px 20px 60px;
     background: linear-gradient(135deg, #1e293b, #0f172a);
   }
-  header h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 10px; }
-  header p { font-size: 1.1rem; color: #94a3b8; max-width: 600px; margin: 0 auto; }
-  .socials { margin-top: 20px; }
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #38bdf8;
+    margin-bottom: 25px;
+  }
+  .hero h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 10px; }
+  .hero h2 { font-size: 1.2rem; color: #94a3b8; font-weight: 400; margin-bottom: 20px; }
+  .hero p { font-size: 1rem; color: #cbd5e1; max-width: 600px; margin: 0 auto 25px; }
+
   .socials a {
     color: #38bdf8;
     text-decoration: none;
-    margin: 0 12px;
+    margin: 0 8px;
     font-weight: 600;
     border: 1px solid #38bdf8;
     padding: 8px 18px;
@@ -34,51 +42,9 @@
   }
   .socials a:hover { background: #38bdf8; color: #0f172a; }
 
-  section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
-  h2 {
-    text-align: center;
-    color: #38bdf8;
-    margin-bottom: 40px;
-    font-size: 2rem;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-  }
-  .card {
-    background: #1e293b;
-    border-radius: 12px;
-    padding: 25px;
-    border: 1px solid #334155;
-    transition: 0.3s;
-  }
-  .card:hover { transform: translateY(-5px); border-color: #38bdf8; }
-  .card h3 { color: #f1f5f9; margin-bottom: 10px; font-size: 1.2rem; }
-  .card p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px; }
-  .tools {
-    font-size: 0.8rem;
-    color: #38bdf8;
-    margin-bottom: 15px;
-    display: block;
-  }
-  .card a {
-    color: #0f172a;
-    background: #38bdf8;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  .skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-  }
+  section { padding: 50px 20px; max-width: 800px; margin: 0 auto; }
+  h3 { text-align: center; color: #38bdf8; margin-bottom: 25px; font-size: 1.5rem; }
+  .skills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
   .skill-tag {
     background: #1e293b;
     border: 1px solid #38bdf8;
@@ -88,77 +54,30 @@
     font-size: 0.95rem;
   }
 
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: #64748b;
-    border-top: 1px solid #1e293b;
-  }
+  footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px solid #1e293b; }
 </style>
 </head>
 <body>
 
-<header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+</nav>
+
+<div class="hero">
+  <img src="profile.jpg" alt="Swetha Vidapanakal" class="profile-pic">
   <h1>Swetha Vidapanakal</h1>
-  <p>Data Analytics professional in transition — building dashboards and data solutions using Power BI, SQL, Excel, Tableau, and Python.</p>
+  <h2>Data Analytics Professional</h2>
+  <p>Transitioning into Data Analytics with a background spanning full-stack development, embedded systems, and Generative AI training. I build dashboards and data solutions using Power BI, SQL, Excel, Tableau, and Python.</p>
   <div class="socials">
     <a href="https://github.com/VidapanakalSwetha" target="_blank">GitHub</a>
     <a href="https://www.linkedin.com/in/vidapanakal-swetha/" target="_blank">LinkedIn</a>
     <a href="mailto:swethavidapanakal@gmail.com">Email</a>
   </div>
-</header>
+</div>
 
-<section id="projects">
-  <h2>Featured Projects</h2>
-  <div class="projects-grid">
-
-    <div class="card">
-      <h3>HR Analytics Dashboard</h3>
-      <span class="tools">Power BI • DAX</span>
-      <p>4-page dashboard analyzing IBM HR attrition data with 5 custom DAX measures.</p>
-      <a href="https://github.com/VidapanakalSwetha/HR-Analytics-Dashboard-PowerBI" target="_blank">View Project</a>
-    </div>
-
-    <div class="card">
-      <h3>Sales Performance Dashboard</h3>
-      <span class="tools">Power BI • DAX</span>
-      <p>KPI tracking (Sales, Profit, Orders, Margin %) on Sample Superstore dataset.</p>
-      <a href="https://github.com/VidapanakalSwetha/Sales-Performance-Dashboard-PowerBI" target="_blank">View Project</a>
-    </div>
-
-    <div class="card">
-      <h3>Drone Fleet Operations Dashboard</h3>
-      <span class="tools">Power BI • Power Query</span>
-      <p>Analysis of 554 drone flight records; identified failure-prone models and performance patterns.</p>
-      <a href="https://github.com/VidapanakalSwetha/Drone-fleet-operations-dashboard" target="_blank">View Project</a>
-    </div>
-
-    <div class="card">
-      <h3>COVID-19 India Dashboard</h3>
-      <span class="tools">Tableau</span>
-      <p>Built from 7 Kaggle datasets, published on Tableau Public.</p>
-      <a href="https://github.com/VidapanakalSwetha/India-COVID19-Tableau-Dashboard" target="_blank">View Project</a>
-    </div>
-
-    <div class="card">
-      <h3>Pizza Sales SQL Analysis</h3>
-      <span class="tools">SQL</span>
-      <p>End-to-end SQL analysis project on pizza sales data.</p>
-      <a href="https://github.com/VidapanakalSwetha/pizza-sales-sql-analysis" target="_blank">View Project</a>
-    </div>
-
-    <div class="card">
-      <h3>AI-Powered Data Cleaning Assistant</h3>
-      <span class="tools">Python • Pandas • Gemini API</span>
-      <p>Automated data profiling and LLM-assisted cleaning on a 12,575-row retail dataset.</p>
-      <a href="https://github.com/VidapanakalSwetha/AI-data-cleaning-assistant" target="_blank">View Project</a>
-    </div>
-
-  </div>
-</section>
-
-<section id="skills">
-  <h2>Skills</h2>
+<section>
+  <h3>Skills</h3>
   <div class="skills">
     <span class="skill-tag">Power BI</span>
     <span class="skill-tag">SQL</span>
@@ -175,4 +94,4 @@
 </footer>
 
 </body>
-</html> 
+</html>
