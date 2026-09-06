@@ -3,65 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swetha Vidapanakal | Data Analytics Portfolio</title>
+<title>Swetha Vidapanakal | Data Analyst</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
- body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #0f172a;
-    background-image: radial-gradient(#1e293b 1.5px, transparent 1.5px);
-    background-size: 24px 24px;
-    color: #e2e8f0;
-    line-height: 1.6;
-  }
-  nav { text-align: center; padding: 20px; background: #1e293b; }
-  nav a { color: #38bdf8; text-decoration: none; margin: 0 15px; font-weight: 600; }
-  nav a:hover { text-decoration: underline; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-  .hero {
-    text-align: center;
-    padding: 80px 20px 60px;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-  }
-  .profile-pic {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #38bdf8;
-    margin-bottom: 25px;
-  }
-  .hero h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 10px; }
-  .hero h2 { font-size: 1.2rem; color: #94a3b8; font-weight: 400; margin-bottom: 20px; }
-  .hero p { font-size: 1rem; color: #cbd5e1; max-width: 600px; margin: 0 auto 25px; }
+nav { text-align: center; padding: 20px; background: #1e293b; position: sticky; top: 0; z-index: 10; }
+nav a { color: #38bdf8; text-decoration: none; margin: 0 15px; font-weight: 600; }
+nav a:hover { text-decoration: underline; }
 
-  .socials a {
-    color: #38bdf8;
-    text-decoration: none;
-    margin: 0 8px;
-    font-weight: 600;
-    border: 1px solid #38bdf8;
-    padding: 8px 18px;
-    border-radius: 25px;
-    display: inline-block;
-    margin-top: 10px;
-    transition: 0.3s;
-  }
-  .socials a:hover { background: #38bdf8; color: #0f172a; }
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, #1e3a5f 0%, #0f172a 60%);
+}
+.hero::before, .hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  z-index: 0;
+}
+.hero::before { width: 300px; height: 300px; background: #38bdf8; top: -60px; left: -60px; }
+.hero::after { width: 260px; height: 260px; background: #6366f1; bottom: -60px; right: -60px; }
 
-  section { padding: 50px 20px; max-width: 800px; margin: 0 auto; }
-  h3 { text-align: center; color: #38bdf8; margin-bottom: 25px; font-size: 1.5rem; }
-  .skills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-  .skill-tag {
-    background: #1e293b;
-    border: 1px solid #38bdf8;
-    color: #38bdf8;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 0.95rem;
-  }
+.hero-content { position: relative; z-index: 1; }
 
-  footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px solid #1e293b; }
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #38bdf8;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+  margin-bottom: 24px;
+}
+
+.hero h1 { font-size: 2.6rem; color: #f1f5f9; margin-bottom: 10px; }
+.hero h1 span { color: #38bdf8; }
+
+.tagline {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  min-height: 1.6em;
+  border-right: 2px solid #38bdf8;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 26px;
+}
+
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px; }
+.btn {
+  padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary { background: #38bdf8; color: #0f172a; }
+.btn-outline { background: transparent; color: #38bdf8; border: 2px solid #38bdf8; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(56,189,248,0.25); }
+
+.socials a {
+  color: #94a3b8;
+  margin: 0 10px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.socials a:hover { color: #38bdf8; }
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px 20px;
+  background: #1e293b;
+}
+.stat { text-align: center; }
+.stat .num { font-size: 2.4rem; font-weight: 700; color: #38bdf8; }
+.stat .label { color: #94a3b8; font-size: 0.9rem; margin-top: 4px; }
+
+.skills-section { padding: 70px 20px; text-align: center; }
+.skills-section h2 { color: #f1f5f9; font-size: 1.8rem; margin-bottom: 40px; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.skill-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 22px 10px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.skill-card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+.skill-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+.skill-card .name { font-size: 0.9rem; color: #e2e8f0; }
+
+footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px solid #1e293b; }
 </style>
 </head>
 <body>
@@ -72,34 +131,89 @@
   <a href="about.html">About</a>
 </nav>
 
-<div class="hero">
-  <img src="profile.jpg" alt="Swetha Vidapanakal" class="profile-pic">
-  <h1>Swetha Vidapanakal</h1>
-  <h2>Data Analytics Professional</h2>
-  <p>Transitioning into Data Analytics with a background spanning full-stack development, embedded systems, and Generative AI training. I build dashboards and data solutions using Power BI, SQL, Excel, Tableau, and Python.</p>
-  <div class="socials">
-    <a href="https://github.com/VidapanakalSwetha" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/vidapanakal-swetha/" target="_blank">LinkedIn</a>
-    <a href="mailto:swethavidapanakal@gmail.com">Email</a>
+<section class="hero">
+  <div class="hero-content">
+    <img class="profile-pic" src="profile.jpg" alt="Swetha Vidapanakal">
+    <h1>Hi, I'm <span>Swetha</span></h1>
+    <div class="tagline" id="typedTagline"></div>
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="projects.html">View Projects</a>
+      <a class="btn btn-outline" href="about.html">Get in Touch</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/vidapanakal-swetha/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/VidapanakalSwetha" target="_blank">GitHub</a>
+    </div>
   </div>
-</div>
+</section>
 
-<section>
-  <h3>Skills</h3>
-  <div class="skills">
-    <span class="skill-tag">Power BI</span>
-    <span class="skill-tag">SQL</span>
-    <span class="skill-tag">Excel</span>
-    <span class="skill-tag">Tableau</span>
-    <span class="skill-tag">Python</span>
-    <span class="skill-tag">DAX</span>
-    <span class="skill-tag">Power Query</span>
+<section class="stats">
+  <div class="stat"><div class="num" data-target="8">0</div><div class="label">Projects Built</div></div>
+  <div class="stat"><div class="num" data-target="3">0</div><div class="label">Internships</div></div>
+  <div class="stat"><div class="num" data-target="6">0</div><div class="label">Tools & Languages</div></div>
+</section>
+
+<section class="skills-section">
+  <h2>Tools I Work With</h2>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="icon">📊</div><div class="name">Power BI</div></div>
+    <div class="skill-card"><div class="icon">📈</div><div class="name">Excel</div></div>
+    <div class="skill-card"><div class="icon">🗄️</div><div class="name">SQL</div></div>
+    <div class="skill-card"><div class="icon">🐍</div><div class="name">Python</div></div>
+    <div class="skill-card"><div class="icon">📉</div><div class="name">Tableau</div></div>
+    <div class="skill-card"><div class="icon">🔗</div><div class="name">Power Query</div></div>
   </div>
 </section>
 
 <footer>
   <p>© 2026 Swetha Vidapanakal. Built with GitHub Pages.</p>
 </footer>
+
+<script>
+const taglineText = "Aspiring Data Analyst | Turning Raw Data into Clear Decisions";
+const taglineEl = document.getElementById('typedTagline');
+let i = 0;
+function typeTagline() {
+  if (i <= taglineText.length) {
+    taglineEl.textContent = taglineText.slice(0, i);
+    i++;
+    setTimeout(typeTagline, 45);
+  } else {
+    taglineEl.style.borderRight = "none";
+  }
+}
+typeTagline();
+
+const counters = document.querySelectorAll('.stat .num');
+const speed = 60;
+function animateCounters() {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const increment = Math.max(target / speed, 1);
+    function update() {
+      count += increment;
+      if (count < target) {
+        counter.textContent = Math.ceil(count);
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = target;
+      }
+    }
+    update();
+  });
+}
+const statsSection = document.querySelector('.stats');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+observer.observe(statsSection);
+</script>
 
 </body>
 </html>
