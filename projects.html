@@ -9,70 +9,94 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background-color: #05070d;
+  background-image: radial-gradient(#1e293b 1px, transparent 1px);
+  background-size: 26px 26px;
   color: #e2e8f0;
   line-height: 1.6;
-  position: relative;
-  overflow-x: hidden;
-  min-height: 100vh;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(circle at 12% 15%, rgba(56,189,248,0.18), transparent 40%),
-    radial-gradient(circle at 85% 20%, rgba(168,85,247,0.16), transparent 45%),
-    radial-gradient(circle at 70% 80%, rgba(236,72,153,0.12), transparent 45%),
-    #05070d;
-}
-
-nav { text-align: center; padding: 18px; background: rgba(30,41,59,0.6); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 10; }
+nav { text-align: center; padding: 18px; background: #1e293b; position: sticky; top: 0; z-index: 10; }
 nav a { color: #38bdf8; text-decoration: none; margin: 0 15px; font-weight: 600; }
 nav a:hover { text-decoration: underline; }
 
-.page-header { text-align: center; padding: 60px 20px 20px; }
-.page-header h1 {
-  font-size: 2.3rem;
-  background: linear-gradient(90deg, #38bdf8, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-}
+.page-header { text-align: center; padding: 60px 20px 10px; }
+.page-header h1 { font-size: 2.2rem; color: #38bdf8; margin-bottom: 10px; }
 .page-header p { color: #94a3b8; max-width: 600px; margin: 0 auto; }
+
+.spotlight-wrap { max-width: 1050px; margin: 40px auto 10px; padding: 0 20px; }
+.spotlight-tag { color: #38bdf8; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+.spotlight {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.spotlight:hover { border-color: #38bdf8; transform: translateY(-4px); }
+.spotlight img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 220px; }
+.spotlight-body { padding: 30px 32px; display: flex; flex-direction: column; justify-content: center; }
+.spotlight-body h2 { color: #f1f5f9; font-size: 1.5rem; margin-bottom: 12px; }
+.spotlight-body p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 18px; }
+.spotlight-cta { color: #38bdf8; font-weight: 600; font-size: 0.9rem; }
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 1000px;
+  margin: 44px auto 10px;
+  padding: 0 20px;
+}
+.filter-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-btn:hover { border-color: #38bdf8; color: #38bdf8; }
+.filter-btn.active { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 28px;
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 30px auto 40px;
   padding: 0 20px;
 }
 
 .card {
-  background: rgba(30,41,59,0.55);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(148,163,184,0.15);
-  border-radius: 16px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-top: 4px solid var(--tool-color, #38bdf8);
+  border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
 }
-.card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(56,189,248,0.6);
-  box-shadow: 0 12px 30px rgba(56,189,248,0.15);
-}
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover { transform: translateY(-6px); }
+.card.hidden { display: none; }
 
 .card .thumb {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
-  border-bottom: 1px solid rgba(148,163,184,0.15);
+  border-bottom: 1px solid #334155;
 }
 
 .card-body { padding: 18px 20px 22px; }
@@ -82,22 +106,15 @@ nav a:hover { text-decoration: underline; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag {
   font-size: 0.78rem;
-  color: #e0f2fe;
-  background: linear-gradient(90deg, rgba(56,189,248,0.25), rgba(168,85,247,0.25));
-  border: 1px solid rgba(56,189,248,0.4);
-  padding: 3px 12px;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  padding: 3px 10px;
   border-radius: 14px;
 }
 
 .card.no-image .card-body { padding-top: 24px; }
-.card.no-image::before {
-  content: "";
-  display: block;
-  height: 4px;
-  background: linear-gradient(90deg, #38bdf8, #a855f7, #ec4899);
-}
 
-footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px solid rgba(148,163,184,0.1); }
+footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px solid #1e293b; }
 </style>
 </head>
 <body>
@@ -110,21 +127,33 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
 
 <div class="page-header">
   <h1>Projects</h1>
-  <p>A mix of Power BI, Tableau, Excel, and SQL dashboards built while transitioning into Data Analytics. Click any card to open it on GitHub.</p>
+  <p>A mix of Power BI, Tableau, Excel, and SQL dashboards built while transitioning into Data Analytics.</p>
 </div>
 
-<div class="grid">
-
-  <a class="card" href="https://github.com/VidapanakalSwetha/Drone-fleet-operations-dashboard" target="_blank">
-    <img class="thumb" src="images/drone-dashboard.png" alt="Drone Fleet Operations Dashboard">
-    <div class="card-body">
-      <h3>Drone Fleet Operations Dashboard</h3>
-      <p>Power BI dashboard on 554 cleaned flight records, surfacing which drone models drive most failures and flight-time patterns by size.</p>
-      <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span></div>
+<div class="spotlight-wrap">
+  <span class="spotlight-tag">★ Spotlight Project</span>
+  <a class="spotlight" href="https://github.com/VidapanakalSwetha/Drone-fleet-operations-dashboard" target="_blank">
+    <img src="images/drone-dashboard.png" alt="Drone Fleet Operations Dashboard">
+    <div class="spotlight-body">
+      <h2>Drone Fleet Operations Dashboard</h2>
+      <p>Power BI dashboard built on 554 cleaned flight records — surfaces which drone models drive the most failures and how flight time varies by drone size, using custom DAX measures and Power Query cleanup.</p>
+      <span class="spotlight-cta">View on GitHub →</span>
     </div>
   </a>
+</div>
 
-  <a class="card" href="https://github.com/VidapanakalSwetha/HR-Analytics-Dashboard-PowerBI" target="_blank">
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="powerbi">Power BI</button>
+  <button class="filter-btn" data-filter="excel">Excel</button>
+  <button class="filter-btn" data-filter="tableau">Tableau</button>
+  <button class="filter-btn" data-filter="sql">SQL</button>
+  <button class="filter-btn" data-filter="python">Python</button>
+</div>
+
+<div class="grid" id="projectGrid">
+
+  <a class="card" data-tool="powerbi" style="--tool-color:#f2c811" href="https://github.com/VidapanakalSwetha/HR-Analytics-Dashboard-PowerBI" target="_blank">
     <img class="thumb" src="images/hr-dashboard.png" alt="HR Analytics Dashboard">
     <div class="card-body">
       <h3>HR Analytics Dashboard</h3>
@@ -133,7 +162,7 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
     </div>
   </a>
 
-  <a class="card" href="https://github.com/VidapanakalSwetha/Sales-Performance-Dashboard-PowerBI" target="_blank">
+  <a class="card" data-tool="powerbi" style="--tool-color:#f2c811" href="https://github.com/VidapanakalSwetha/Sales-Performance-Dashboard-PowerBI" target="_blank">
     <img class="thumb" src="images/sales-dashboard.png" alt="Sales Performance Dashboard">
     <div class="card-body">
       <h3>Sales Performance Dashboard</h3>
@@ -142,7 +171,7 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
     </div>
   </a>
 
-  <a class="card" href="https://github.com/VidapanakalSwetha/India-COVID19-Tableau-Dashboard" target="_blank">
+  <a class="card" data-tool="tableau" style="--tool-color:#e97627" href="https://github.com/VidapanakalSwetha/India-COVID19-Tableau-Dashboard" target="_blank">
     <img class="thumb" src="images/covid-dashboard.png" alt="COVID-19 India Dashboard">
     <div class="card-body">
       <h3>COVID-19 India Dashboard</h3>
@@ -151,7 +180,7 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
     </div>
   </a>
 
-  <a class="card" href="https://github.com/VidapanakalSwetha/bike-sales-excel-dashboard" target="_blank">
+  <a class="card" data-tool="excel" style="--tool-color:#21a366" href="https://github.com/VidapanakalSwetha/bike-sales-excel-dashboard" target="_blank">
     <img class="thumb" src="images/bike-dashboard.png" alt="Bike Sales Dashboard">
     <div class="card-body">
       <h3>Bike Sales Dashboard</h3>
@@ -160,8 +189,8 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
     </div>
   </a>
 
-  <a class="card" href="https://github.com/VidapanakalSwetha/olist-ecommerce-excel-dashboard" target="_blank">
-    <img class="thumb" src="images/olist-dashboard.png" alt="Olist E-Commerce Sales & Delivery Performance Dashboard">
+  <a class="card" data-tool="excel" style="--tool-color:#21a366" href="https://github.com/VidapanakalSwetha/olist-ecommerce-excel-dashboard" target="_blank">
+    <img class="thumb" src="images/olist-dashboard.png" alt="Olist E-Commerce Dashboard">
     <div class="card-body">
       <h3>Olist E-Commerce Sales & Delivery Dashboard</h3>
       <p>Excel star-schema model across 7 linked tables, with Power Query cleaning, DAX measures, and 4 PivotCharts.</p>
@@ -169,7 +198,7 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
     </div>
   </a>
 
-  <a class="card no-image" href="https://github.com/VidapanakalSwetha/AI-data-cleaning-assistant" target="_blank">
+  <a class="card no-image" data-tool="python" style="--tool-color:#3b82f6" href="https://github.com/VidapanakalSwetha/AI-data-cleaning-assistant" target="_blank">
     <div class="card-body">
       <h3>AI-Powered Data Cleaning Assistant</h3>
       <p>Python tool that profiles a messy retail dataset, sends issues to an LLM for column-level fixes, and applies them automatically.</p>
@@ -177,7 +206,7 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
     </div>
   </a>
 
-  <a class="card no-image" href="https://github.com/VidapanakalSwetha/pizza-sales-sql-analysis" target="_blank">
+  <a class="card no-image" data-tool="sql" style="--tool-color:#ef4444" href="https://github.com/VidapanakalSwetha/pizza-sales-sql-analysis" target="_blank">
     <div class="card-body">
       <h3>Pizza Sales SQL Analysis</h3>
       <p>End-to-end SQL analysis of pizza sales data, from raw queries to business insights.</p>
@@ -190,6 +219,35 @@ footer { text-align: center; padding: 40px 20px; color: #64748b; border-top: 1px
 <footer>
   <p>© 2026 Swetha Vidapanakal. Built with GitHub Pages.</p>
 </footer>
+
+<script>
+const buttons = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card[data-tool]');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+    cards.forEach(card => {
+      if (filter === 'all' || card.getAttribute('data-tool') === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
